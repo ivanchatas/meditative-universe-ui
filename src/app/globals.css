@@ -1,31 +1,80 @@
 @import "tailwindcss";
 
+/* Design tokens (dark-first) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary surface */
+  --background: #0B0D14; /* Deep Space */
+  --foreground: #F5F5F7; /* Starlight White */
+
+  /* Accents */
+  --accent-start: #B87333; /* Copper accent start */
+  --accent-end: #FFD8A6; /* Copper accent end */
+  --accent-fallback: #C47A3A; /* solid copper fallback */
+
+  --aurora: #3AB8B8; /* Aurora teal */
+  --lavender: #A39BFF; /* Lavender pulse */
+
+  /* semantic helpers */
+  --muted: rgba(245,245,247,0.06);
+  --glass: rgba(255,255,255,0.04);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Theme helpers (kept as CSS variables) */
+/* color/background helpers available for components */
+/* --color-background: var(--background);
+   --color-foreground: var(--foreground);
+   --font-sans: var(--font-geist-sans);
+   --font-mono: var(--font-geist-mono); */
 
-@media (prefers-color-scheme: dark) {
+/* Light theme: soft pastels and starlight on white */
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --font-color: #0a0a0a;
+    --background: #ffffff;
+    --foreground: #171717;
+    --accent-start: #FFD8A6; /* pastel copper */
+    --accent-end: #FFEFD8;
+    --aurora: #7FDCD0;
+    --lavender: #CBBFFF;
+    --muted: rgba(10,10,10,0.04);
+    --glass: rgba(255,255,255,0.6);
   }
 }
 
 body {
   background: var(--background);
-  color: var(--font-color);
+  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-aside {
-  color: black;
+/* Copperplate-like font fallback */
+@font-face {
+  font-family: 'CopperplateGothicLightFallback';
+  src: local('Copperplate Gothic Light'), local('CopperplateGothic');
+  font-weight: 300;
+  font-style: normal;
 }
+.copperplate { font-family: 'CopperplateGothicLightFallback', Georgia, 'Times New Roman', serif; }
+
+/* slow spin animation for vortex placeholder */
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 60s linear infinite; }
+
+/* Helper: copper gradient for headings, buttons, accents */
+.accent-gradient {
+  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glass surfaces / subtle panels */
+.glass {
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+}
+
+/* Small helpers */
+.muted-bg { background: var(--muted); }
+.accent-teal { color: var(--aurora); }
+.accent-lavender { color: var(--lavender); }

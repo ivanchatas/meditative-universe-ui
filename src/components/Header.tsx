@@ -19,9 +19,9 @@ export default function Header() {
 
   return (
     <header className="w-full flex items-center justify-between p-4 md:p-6">
-      <h1 className="text-xl md:text-2xl font-semibold">Meditative Universe</h1>
+      <h1 className="text-xl md:text-2xl font-semibold accent-gradient" style={{ letterSpacing: '0.06em' }}>Meditative Universe</h1>
       <div className="flex items-center gap-3">
-        <button onClick={toggle} className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20">
+        <button onClick={toggle} className="px-3 py-1 rounded-full glass hover:opacity-90 text-white/90">
           {isDark ? 'Dark' : 'Light'}
         </button>
       </div>
