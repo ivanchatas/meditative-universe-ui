@@ -29,8 +29,13 @@ export async function fetchNEO() {
 }
 
 export async function fetchExoplanets() {
-  // placeholder: Exoplanet Archive isn't a simple NASA REST endpoint, return demo
-  return { message: 'Exoplanet data requires custom query — demo data returned' }
+  // Exoplanet Archive from Caltech/IPAC - public API, no key needed
+  const url = 'https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json&select=pl_name,pl_radj,pl_massj,pl_orbper,pl_orbsmax,st_teff,st_mass'
+  const res = await fetch(url)
+  if (!res.ok) throw new Error(`Exoplanet API ${res.status}: ${res.statusText}`)
+  const data = await res.json()
+  // Return first 10 exoplanets for sonification
+  return data.slice(0, 10)
 }
 
 export async function fetchMars() {

@@ -29,6 +29,24 @@ export default function Menu({ mode, setMode, duration, setDuration, onStart }) 
             <div className="mode-title">🔭 Exoplanet Journey</div>
             <div className="mode-desc">Unique chords from exoplanet characteristics</div>
           </label>
+
+          <label className={`mode ${mode==='neo' ? 'active':''}`}>
+            <input type="radio" name="mode" checked={mode==='neo'} onChange={() => setMode('neo')} />
+            <div className="mode-title">☄️ Near Earth Objects</div>
+            <div className="mode-desc">Rhythmic pulses based on asteroid proximity</div>
+          </label>
+
+          <label className={`mode ${mode==='mars' ? 'active':''}`}>
+            <input type="radio" name="mode" checked={mode==='mars'} onChange={() => setMode('mars')} />
+            <div className="mode-title">🪐 Mars Exploration</div>
+            <div className="mode-desc">Textured ambient sounds from Mars rover imagery</div>
+          </label>
+
+          <label className={`mode ${mode==='cosmic' ? 'active':''}`}>
+            <input type="radio" name="mode" checked={mode==='cosmic'} onChange={() => setMode('cosmic')} />
+            <div className="mode-title">🌌 Cosmic Flow</div>
+            <div className="mode-desc">Random journey through all cosmic data sources</div>
+          </label>
         </div>
 
         <div className="duration">
