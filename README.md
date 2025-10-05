@@ -1,111 +1,36 @@
-# 🌌 Meditative Universe
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Translating NASA Data into Sound and Visual Experiences for Meditation
+## Getting Started
 
-🚀 **1. Core Concept**
-
-Meditative Universe is an interactive application that transforms real NASA data into soundscapes and visual experiences for meditation.
-It blends science, art, and mindfulness, offering users a way to "listen" to the universe and relax while connecting with real astronomical phenomena.
-
-The app translates datasets — such as planetary motion, solar radiation, or images of deep space — into:
-
-- **Soothing sounds (data sonification)**: tones, harmonies, and textures generated from real numerical data.
-- **Dynamic visualizations**: evolving cosmic scenes synchronized with the sound.
-- **Mindfulness modes**: users can choose to meditate to data from the Sun, Earth, exoplanets, or galaxies.
-
-🛰️ **2. Public NASA Data Sources**
-
-All datasets can be accessed for free through the NASA Open APIs:
-🔗 https://api.nasa.gov/
-
-| API | Data Provided | Meditation Use |
-|-----|---------------|----------------|
-| APOD (Astronomy Picture of the Day) | Daily space image + description | Use as visual background, generate sound from color/brightness |
-| EPIC (Earth Polychromatic Imaging Camera) | Real-time images of Earth from space | "Breathing Earth" visualization, synchronized with rotation |
-| DONKI (Space Weather Database) | Solar activity and geomagnetic storms | Sound intensity changes with solar radiation |
-| NEO (Near Earth Objects) | Nearby asteroids and trajectories | Rhythmic pulses or beats based on proximity |
-| Exoplanet Archive | Exoplanet characteristics (mass, temperature, radius) | Generate tones from physical parameters |
-| Mars Rover Photos | Mars rover imagery | Textured ambient visuals from Mars surface |
-
-🎧 **3. Data-to-Sound Conversion (Creative Sonification)**
-
-The goal is not scientific accuracy, but emotional resonance — transforming real cosmic data into relaxing audio.
-
-🔹 **JavaScript (frontend / browser)**
-
-- **Tone.js** → for sound generation
-- **Three.js** → for interactive 3D visualizations
-- **D3.js** → for data-driven animations
-
-Example with Tone.js:
-
-```javascript
-import * as Tone from "tone";
-
-async function playPlanetSound(mass, temperature) {
-  const synth = new Tone.Synth().toDestination();
-  const freq = 200 + (mass % 500); // mass → frequency
-  const duration = temperature > 300 ? "2n" : "4n"; // temperature → note length
-  synth.triggerAttackRelease(freq, duration);
-}
-```
-
-🎨 **4. Visual Synchronization**
-
-To create a meditative experience, visuals must react to sound:
-
-- **Three.js** → particle systems expanding with each tone
-- **Canvas API / p5.js** → flowing waveforms or cosmic shapes
-- **GLSL shaders** → realistic nebulae and cosmic light effects
-
-Examples:
-- Rising pitch → stars brighten.
-- Strong solar radiation → warm color glow.
-- Calm data → slow particle movement.
-
-☯️ **5. Meditation Modes**
-
-Users can explore different meditative "journeys":
-
-| Mode | Data Source | Atmosphere |
-|------|-------------|------------|
-| 🌞 Solar Calm | Space weather (DONKI API) | Warm ambient tones from solar radiation |
-| 🌍 Earth Breathing | EPIC API | Rhythmic breathing synced with Earth's rotation |
-| 🌌 Deep Space Flow | APOD API | Ethereal textures inspired by galaxies |
-| 🔭 Exoplanet Journey | Exoplanet Archive | Each planet generates a unique musical chord |
-
-Features:
-- Adjustable session duration (5, 10, 15 minutes).
-- Smooth data transitions.
-- Random "Cosmic Flow" mode combining datasets.
-
-## Quick Start
-
-1. **Install dependencies:**
-
-```bash
-npm install
-```
-
-2. **Create a `.env` file with your NASA API key** (optional — the demo uses DEMO_KEY):
-
-```
-VITE_NASA_API_KEY=YOUR_KEY_HERE
-```
-
-3. **Run the development server:**
+First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Notes
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- This is a prototype. The `src/components/Player.jsx` contains a minimal sonification using Tone.js and a canvas visual.
-- The Exoplanet Archive may require a separate query path; the app currently returns a placeholder for that endpoint.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Next Steps
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- Improve sonification mapping, add reverb/delay textures.
-- Add more robust visuals (WebGL / Three.js) and synchronized animations.
-- Implement live parameter controls and presets for meditation lengths.
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
